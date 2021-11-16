@@ -11,7 +11,7 @@ public class Controller {
     public Controller() {
         variants.put(1, Period.NOW);
         variants.put(5, Period.FIVE_DAYS);
-        variants.put(+, Period.BASE);
+        variants.put(88, Period.BASE);
     }
 
     public void getWeather(String userInput, String selectedCity) throws IOException {
@@ -23,9 +23,10 @@ public class Controller {
                 break;
             case FIVE_DAYS:
                 weatherModel.getWeather(selectedCity, Period.FIVE_DAYS);
+                break;
             case BASE:
                 weatherModel.getSavedToWeatherBase();
-
+                break;
         }
     }
 }
