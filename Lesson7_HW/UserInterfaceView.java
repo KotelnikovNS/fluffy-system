@@ -13,20 +13,25 @@ public class UserInterfaceView {
             System.out.println("Введите имя города: ");
             String city = scanner.nextLine();
 
-            System.out.println("Введите 1 для получения погоды на сегодня;" +
-                    "Введите 5 для прогноза на 5 дней;  Для выхода введите 0:");
+                System.out.println("Введите 1 для получения погоды на сегодня;" +
+                        "Введите 5 для прогноза на 5 дней;  Для выхода введите 0:");
 
-            String command = scanner.nextLine();
+                String command = scanner.nextLine();
 
-            //TODO* Сделать метод валидации пользовательского ввода
+                if (command.equals("0")) break;
+                if (command != "1" || command != "5" || command != "0") {
+                    System.out.println("Неа... Введите 1 для получения погоды на сегодня;" +
+                            "Введите 5 для прогноза на 5 дней;  Для выхода введите 0:");
 
-            if (command.equals("0")) break;
+                    command = scanner.nextLine();
+                }
 
-            try {
-                controller.getWeather(command, city);
-            } catch (IOException e) {
-                e.printStackTrace();
+                try {
+                    controller.getWeather(command, city);
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
-}
