@@ -22,6 +22,7 @@ public class Controller {
                 break;
             case FIVE_DAYS:
                 weatherModel.getWeather(selectedCity, Period.FIVE_DAYS);
+                break;
 
         }
     }
