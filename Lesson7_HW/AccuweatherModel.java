@@ -30,7 +30,7 @@ public class AccuweatherModel implements WeatherModel {
     public void getWeather(String selectedCity, Period period) throws IOException {
         switch (period) {
             case NOW:
-                HttpUrl httpUrl = new HttpUrl.Builder()
+                HttpUrl httpUrl1 = new HttpUrl.Builder()
                         .scheme(PROTOKOL)
                         .host(BASE_HOST)
                         .addPathSegment(FORECASTS)
@@ -41,18 +41,16 @@ public class AccuweatherModel implements WeatherModel {
                         .addQueryParameter(API_KEY_QUERY_PARAM, API_KEY)
                         .build();
 
-                Request request = new Request.Builder()
-                        .url(httpUrl)
+                Request request1 = new Request.Builder()
+                        .url(httpUrl1)
                         .build();
 
-                Response oneDayForecastResponse = okHttpClient.newCall(request).execute();
+                Response oneDayForecastResponse = okHttpClient.newCall(request1).execute();
                 String weatherResponse1 = oneDayForecastResponse.body().string();
                 System.out.println(weatherResponse1);
-                //TODO: сделать человекочитаемый вывод погоды. Выбрать параметры для вывода на свое усмотрение
-                //Например: Погода в городе Москва - 5 градусов по цельсию Expect showers late Monday night
                 break;
             case FIVE_DAYS:
-                HttpUrl httpUrl1 = new HttpUrl.Builder()
+                HttpUrl httpUrl5 = new HttpUrl.Builder()
                         .scheme(PROTOKOL)
                         .host(BASE_HOST)
                         .addPathSegment(FORECASTS)
@@ -63,14 +61,14 @@ public class AccuweatherModel implements WeatherModel {
                         .addQueryParameter(API_KEY_QUERY_PARAM, API_KEY)
                         .build();
 
-                Request request1 = new Request.Builder()
-                        .url(httpUrl1)
+                Request request5 = new Request.Builder()
+                        .url(httpUrl5)
                         .build();
 
-                Response fiveDaysForecastResponse = okHttpClient.newCall(request1).execute();
+                Response fiveDaysForecastResponse = okHttpClient.newCall(request5).execute();
                 String weatherResponse5 = fiveDaysForecastResponse.body().string();
+//                        .split(":")[];
                 System.out.println(weatherResponse5);
-                //TODO*: реализовать вывод погоды на 5 дней
                 break;
         }
     }
@@ -102,3 +100,4 @@ public class AccuweatherModel implements WeatherModel {
 
     }
 }
+ 
